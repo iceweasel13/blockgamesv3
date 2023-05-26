@@ -8,6 +8,7 @@ import HomePage from "./Pages/HomePage";
 import AboutPage from "./Pages/AboutPage";
 import logo from "./images/logo.png";
 import GamePage from "./Pages/GamePage";
+
 const games = [
   { id: "1", logo: logo, title: "oyun1" },
   { id: "2", logo: logo, title: "oyun2" },
@@ -22,9 +23,7 @@ const games = [
   { id: "3", logo: logo, title: "oyun3" },
   { id: "4", logo: logo, title: "oyun4" },
 ];
-const profiles = [
-  { pfp: logo, names: "Nihat Zaman", role: "Blockchain Developer" },
-];
+
 export default function Home() {
   return (
     <Router>
@@ -33,7 +32,7 @@ export default function Home() {
         <Route exact path="/" element={<HomePage />} />
         <Route path="/Games" element={<GamesPage props={games} />} />
         <Route path="/games/:gamesid" element={<GamePage props={games} />} />
-        <Route path="/about" element={<AboutPage props={profiles} />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/More" element={<FaqPage />} />
       </Routes>
       <Footer />
