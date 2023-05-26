@@ -30,8 +30,8 @@ export default function Home() {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route path="/Games" element={<GamesPage props={games} />} />
-        <Route path="/games/:gamesid" element={<GamePage props={games} />} />
+        <Route path="/Games" element={<GamesPage />} />
+        <Route path="/games/:id" element={<GamePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/More" element={<FaqPage />} />
       </Routes>

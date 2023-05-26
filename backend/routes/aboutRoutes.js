@@ -1,7 +1,7 @@
 // routes/profileRoutes.js
 const express = require("express");
 const router = express.Router();
-const Profile = require("../models/Profilele");
+const Profile = require("../models/Profile");
 
 // Get all profiles
 router.get("/", async (req, res) => {
