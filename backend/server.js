@@ -2,18 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+const highScoresRouter = require("./routes/highScores");
 const gameRoutes = require("./routes/gameRoutes");
 const aboutRoutes = require("./routes/aboutRoutes");
 const faqRoutes = require("./routes/faqRoutes");
 
 const app = express();
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/games", gameRoutes);
 app.use("/api/about", aboutRoutes);
 app.use("/api/faq", faqRoutes);
-
+app.use("/api/high-scores", highScoresRouter);
 const uri =
   "mongodb+srv://nihatzaman:123456Nihat@cluster0.azl5rgq.mongodb.net/?retryWrites=true&w=majority";
 mongoose

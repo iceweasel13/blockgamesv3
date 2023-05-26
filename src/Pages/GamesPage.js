@@ -19,7 +19,7 @@ const GamesPage = () => {
   }, []);
 
   return (
-    <div className="h-100 container mx-auto p-4 bg-gray-950 rounded-lg mt-4 mb-4 px-36">
+    <div className="h-screen container mx-auto p-4 bg-gray-950 rounded-lg mt-4 mb-4 px-36">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {games.map((game) => (
           <GamesCard
