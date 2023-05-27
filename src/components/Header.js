@@ -32,7 +32,6 @@ function Navbar() {
   const address = useAddress();
   const { contract } = useContract(contractAddress, "token");
   const { data } = useTokenBalance(contract, address);
-  console.log(data);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const connect = useConnect();
   const disconnect = useDisconnect();
