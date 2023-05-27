@@ -1,7 +1,12 @@
-import React, { useEffect, useRef } from "react";
+// KEY_LEFT = 65,
+// KEY_UP = 87,
+// KEY_RIGHT = 68,
+// KEY_DOWN = 83;
+import React, { useEffect, useRef, useState } from "react";
 
 const SnakeGame = () => {
   const canvasRef = useRef(null);
+  const [gameState, setGameState] = useState("notStarted");
 
   useEffect(() => {
     const COLS = 26,
@@ -9,14 +14,14 @@ const SnakeGame = () => {
       EMPTY = 0,
       SNAKE = 1,
       FRUIT = 2,
-      LEFT = 0,
-      UP = 1,
-      RIGHT = 2,
-      DOWN = 3,
-      KEY_LEFT = 37,
-      KEY_UP = 38,
-      KEY_RIGHT = 39,
-      KEY_DOWN = 40;
+      LEFT = "LEFT",
+      UP = "UP",
+      RIGHT = "RIGHT",
+      DOWN = "DOWN",
+      KEY_LEFT = 65, // A
+      KEY_UP = 87, // W
+      KEY_RIGHT = 68, // D
+      KEY_DOWN = 83; // S
 
     let canvas, ctx, keystate, frames, score, gameOver;
 
@@ -90,6 +95,7 @@ const SnakeGame = () => {
     }
 
     function startGame() {
+      setGameState("playing");
       gameOver = false;
 
       canvas = canvasRef.current;
@@ -212,13 +218,31 @@ const SnakeGame = () => {
       ctx.fillText("SCORE: " + score, 10, canvas.height - 10);
     }
 
-    startGame();
-  }, []);
+    if (gameState === "playing") {
+      startGame();
+    }
+
+    return () => {
+      // Clean up the event listeners or any other resources if needed
+    };
+  }, [gameState]);
+
+  const handleStartGame = () => {
+    setGameState("playing");
+  };
+
+  const handleRestartGame = () => {
+    setGameState("notStarted");
+  };
 
   return (
     <div>
-      <button onClick={() => setGameState("start")}>Start Game</button>
-      <button onClick={() => setGameState("restart")}>Restart Game</button>
+      {gameState === "notStarted" && (
+        <button onClick={handleStartGame}>Start Game</button>
+      )}
+      {gameState === "playing" && (
+        <button onClick={handleRestartGame}>Restart Game</button>
+      )}
       <canvas ref={canvasRef}></canvas>
     </div>
   );
